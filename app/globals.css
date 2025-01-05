@@ -11,11 +11,58 @@
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
+    --foreground: #001b22;
   }
+}
+
+/* Estilización del scrollbar utilizando pseudo-clases */
+::-webkit-scrollbar {
+  width: 12px;  /* Ancho del scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ffffff;  /* Color del pulgar del scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background-color: #bbbbbb;  /* Color del fondo del scrollbar */
+}
+
+/* Scrollbar para contenido anidado */
+.nested-content::-webkit-scrollbar-thumb {
+  background-color: #ffffff90;  /* Color del thumb del scrollbar secundario */
+}
+
+.nested-content::-webkit-scrollbar-track {
+  background-color: #ffffff20;  /* Color del track del scrollbar secundario */
+}
+
+.listview {
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 98%)
+}
+
+.logo {
+  font-family: var(--font-pacifico);
+  font-size: 2rem;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-gabarito), Arial, Helvetica, sans-serif;
+  font-size: 16px;
 }

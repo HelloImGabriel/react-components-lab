@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Pacifico, Gabarito, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import Header from "./sections/header";
+import ScrollableList from "./components/scrollable-list";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const jetbrains_mono = JetBrains_Mono({
+  variable: "--font-jetbrains-mono",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const gabarito = Gabarito({
+  variable: "--font-gabarito",
   subsets: ["latin"],
+});
+
+const pacifico = Pacifico({
+  variable: "--font-pacifico",
+  subsets: ["latin"],
+  weight: ["400"]
 });
 
 export const metadata: Metadata = {
@@ -24,10 +32,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${jetbrains_mono.variable} ${gabarito.variable} ${pacifico.variable} relative antialiased`}>
+          <Header/>
+          <div className="sticky top-0 w-full h-screen -mt-[50%] -z-50 bg-gradient-to-b from-black/10 to-black/20"></div>
+          <div className="relative flex w-full min-h-screen">
+            <ScrollableList/>
+            <div className="flex w-full">
+              {children}
+            </div>
+          </div>
       </body>
     </html>
   );
