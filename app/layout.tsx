@@ -34,7 +34,6 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${jetbrains_mono.variable} ${gabarito.variable} ${pacifico.variable} relative antialiased`}>
           <Header/>
-          <div className="sticky top-0 w-full h-screen -mt-[50%] -z-50 bg-gradient-to-b from-black/10 to-black/20"></div>
           <div className="relative flex w-full min-h-screen">
             <ScrollableList/>
             <div className="flex w-full">

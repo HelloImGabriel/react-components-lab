@@ -4,8 +4,8 @@ import { motion, useMotionValue } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
 export default function Carousel(
-	{components,innerArrows,innerPoints,color}:
-	{components:React.ReactElement[],innerArrows?:boolean,innerPoints?:boolean,color?:string}
+	{components,innerArrows,innerPoints,hideArrows,hidePoints,color,delay=6}:
+	{components:React.ReactElement[],innerArrows?:boolean,innerPoints?:boolean,hideArrows?:boolean,hidePoints?:boolean,color?:string,delay?:number}
 ) {
 	
 	const [index, setIndex] = useState<number>(0)
@@ -15,7 +15,7 @@ export default function Carousel(
 	const dragX = useMotionValue(0)
 	const DRAG_BUFFER = 50
 	const ONE_SECOND = 1000
-	const AUTO_DELAY = ONE_SECOND * 6
+	const AUTO_DELAY = ONE_SECOND * delay
 
 	const move = (n: number) => {
 		setIndex(prevIndex => (prevIndex + n + length) % length);
@@ -72,7 +72,9 @@ export default function Carousel(
 	return (
 		<div className="relative flex flex-col w-full gap-8 items-center">
 			<div className="relative flex w-full h-fit justify-center items-center gap-4">
-				<ArrowButton direction={-1} className={`${innerArrows ? 'absolute left-8' : ''}`} />
+				{!hideArrows && (
+					<ArrowButton direction={-1} className={`${innerArrows ? 'absolute left-8' : ''}`} />
+				)}
 				<div className="relative flex w-full h-fit overflow-hidden">
 					<motion.div
 					drag='x'
@@ -95,9 +97,13 @@ export default function Carousel(
 						})}
 					</motion.div>
 				</div>
-				<ArrowButton direction={1} className={`${innerArrows ? 'absolute right-8' : ''}`}/>
+				{!hideArrows && (
+					<ArrowButton direction={1} className={`${innerArrows ? 'absolute right-8' : ''}`}/>
+				)}
 			</div>
-			<Points className={`${innerPoints ? 'absolute bottom-8' : ''}`}/>
+			{!hidePoints && (
+				<Points className={`${innerPoints ? 'absolute bottom-8' : ''}`}/>
+			)}
 		</div>
 	)
 }
