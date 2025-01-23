@@ -12,7 +12,8 @@ import Skeleton from "@mui/material/Skeleton";
 
 export default function CarouselPage() {
 
-	const codeString = `<div className="flex flex-col w-full gap-2 p-10">
+	const codeString = 
+`<div className="flex flex-col w-full gap-2 p-10">
 	<div className="flex gap-4 w-full">
 		<Skeleton variant="circular" width={40} height={40} />
 		<Skeleton width={200} height={40}/>

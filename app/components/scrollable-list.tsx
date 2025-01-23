@@ -15,7 +15,7 @@ export default function ScrollableList() {
 		{href: "/", label: "Presentation", sublinks: [
 			{href: '/skeleton', label: 'Skeleton', sublinks: []},
 			{href: '/carousel', label: 'Carousel', sublinks: []},
-			{href: '/carousel', label: 'Carousel', sublinks: []},
+			{href: '/typing-animation', label: 'Typing Animation', sublinks: []},
 		]},
 		{href: "/", label: "Presentation", sublinks: [
 			{href: '/carousel', label: 'Carousel', sublinks: []},
