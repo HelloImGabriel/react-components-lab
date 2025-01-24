@@ -22,19 +22,6 @@ export default function TypingAnimation({ texts, repeat, delay, className }: Typ
   );
   const updatedThisRound = useMotionValue(true);
 
-  const updatedThisRoundLogic = (latest: number) => {
-    if (updatedThisRound.get() === true && latest > 0) {
-      updatedThisRound.set(false);
-    } else if (updatedThisRound.get() === false && latest === 0) {
-      if (textIndex.get() === texts.length - 1) {
-        textIndex.set(0);
-      } else {
-        textIndex.set(textIndex.get() + 1);
-      }
-      updatedThisRound.set(true);
-    }
-  }
-
   useEffect(() => {
     animate(count, 60, {
       type: "tween",
@@ -45,10 +32,21 @@ export default function TypingAnimation({ texts, repeat, delay, className }: Typ
       repeatType: "reverse",
       repeatDelay: 1,
       onUpdate(latest) {
-        updatedThisRoundLogic(latest)
+        {
+          if (updatedThisRound.get() === true && latest > 0) {
+            updatedThisRound.set(false);
+          } else if (updatedThisRound.get() === false && latest === 0) {
+            if (textIndex.get() === texts.length - 1) {
+              textIndex.set(0);
+            } else {
+              textIndex.set(textIndex.get() + 1);
+            }
+            updatedThisRound.set(true);
+          }
+        }
       }
     });
-  }, []);
+  }, [count, delay, repeat, textIndex, texts.length, updatedThisRound]);
 
   return <motion.span className={`inline ${className}`}>{displayText}</motion.span>;
 }

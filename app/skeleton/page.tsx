@@ -1,7 +1,6 @@
 'use client'
 
 import Image from "next/image";
-import Carousel from "../components/carousel";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import VariablesTable from "../components/variables-table";
@@ -27,7 +26,7 @@ export default function CarouselPage() {
 
   const variableTable: React.ReactElement = <VariablesTable vars={variables}/>
 
-  const exampleComponent = () => {
+  const ExampleComponent = () => {
 
 	const [key, setKey] = useState<number>(0)
 
@@ -65,17 +64,9 @@ export default function CarouselPage() {
 	  <div className="relative flex flex-col gap-4">
 		<h1 className=""><span className="text-primary">{`<`}</span>Skeleton<span className="text-primary">{` />`}</span></h1>
 		<p className="flex">A Skeleton component is a placeholder UI used to indicate that content is loading. It provides a visual representation of the layout, often using grey or animated blocks, to improve user experience by making the loading state more engaging and reducing perceived wait times. Skeletons are commonly used in web applications to mimic the shape of the final content until the actual data is fully loaded.</p>
-		<ContentSection content={exampleComponent()}/>
+		<ContentSection content={ExampleComponent()}/>
 		<ContentSection title={"Reference"} content={variableTable}/>
 	  </div>
 	</div>
   );
 }
-
-const components = [26,21,17,24].map((n) => {
-  return(
-	<div key={n} className="flex w-full h-96 m-2" style={{boxShadow: '0px 4px 4px rgb(0,0,0,0.4)'}}>
-	  <Image className="flex w-full h-full object-cover" draggable='false' src={`/images/image_${n}.jpg`} alt={"Landscape"} width={1400} height={400}/>
-	</div>
-  )
-})

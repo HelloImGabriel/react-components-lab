@@ -13,11 +13,9 @@ export default function CarouselPage() {
 
   const codeString = `<Carousel components={components} color="#ffffff" innerArrows innerPoints/>`
   const variableTable: React.ReactElement = <VariablesTable vars={variables}/>
+  const [key, setKey] = useState<number>(0)
 
-  const exampleComponent = () => {
-
-	const [key, setKey] = useState<number>(0)
-
+  const ExampleComponent = () => {
 	return (
 		<div className="flex flex-col w-full gap-4">
 			<SyntaxHighlighter customStyle={{border: '1px solid #ddd', borderRadius: '8px', background: '#001b22'}} language="tsx" style={vscDarkPlus}>
@@ -42,7 +40,7 @@ export default function CarouselPage() {
 	  <div className="relative flex flex-col gap-4">
 		<h1 className=""><span className="text-primary">{`<`}</span>Carousel<span className="text-primary">{` />`}</span></h1>
 		<p className="flex">A custom React carousel allows navigation between different personalized elements, such as images, texts, or interactive components, enhancing the visual and user experience. Perfect for displaying content in an engaging and optimized way.</p>
-		<ContentSection content={exampleComponent()}/>
+		<ContentSection content={ExampleComponent()}/>
 		<ContentSection title={"Reference"} content={variableTable}/>
 	  </div>
 	</div>
